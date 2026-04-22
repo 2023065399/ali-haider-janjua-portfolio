@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Haider | Specialized Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        :root { --primary: #38bdf8; --bg: #020617; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #f8fafc; }
+        
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-text { background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Chatbot Interface */
+        #chatbot { 
+            position: fixed; bottom: 0; right: 20px; width: 400px; max-width: 95%;
+            transform: translateY(110%); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999; border-radius: 24px 24px 0 0; overflow: hidden;
+            box-shadow: 0 -20px 50px -10px rgba(0, 0, 0, 0.7);
+        }
+        #chatbot.active { transform: translateY(0); }
+        .chat-body { height: 400px; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; background: #0f172a; }
+        
+        .msg { padding: 12px 16px; border-radius: 18px; font-size: 14px; max-width: 85%; line-height: 1.5; }
+        .bot { background: #1e293b; align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid rgba(255,255,255,0.05); }
+        .user { background: var(--primary); align-self: flex-end; border-bottom-right-radius: 2px; color: white; }
+
+        .skill-tag { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); padding: 6px 14px; border-radius: 99px; font-size: 11px; font-weight: 700; color: #38bdf8; transition: all 0.3s ease; }
+        .skill-tag:hover { background: var(--primary); color: white; }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 glass top-0 py-4 px-6 border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-black gradient-text tracking-tighter uppercase">Ali Haider</div>
+            <div class="hidden lg:flex space-x-8 text-xs font-bold tracking-widest text-slate-400">
+                <a href="#home" class="hover:text-sky-400 transition">HOME</a>
+                <a href="#about" class="hover:text-sky-400 transition">ABOUT</a>
+                <a href="#expertise" class="hover:text-sky-400 transition">EXPERTISE</a>
+                <a href="https://wa.me/923297537310" class="text-green-500 font-black">WHATSAPP</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center justify-center pt-24 px-6 text-center">
+        <div class="max-w-4xl">
+            <h2 class="text-sky-400 font-bold mb-6 tracking-[0.5em] uppercase text-xs">Professional Portfolio</h2>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter">Ali <span class="gradient-text">Haider</span></h1>
+            <p class="text-slate-400 text-lg md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed">
+                Specialized in <span class="text-white font-bold">Software Engineering</span>. 
+                Delivering high-performance code, intelligent AI models, and professional mobile applications.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <button onclick="activateChatbot()" class="bg-white text-black px-12 py-5 rounded-full font-bold hover:scale-105 transition shadow-2xl">
+                    <i class="fas fa-terminal mr-2"></i> Let's Talk
+                </button>
+                <a href="https://wa.me/923297537310" target="_blank" class="glass px-12 py-5 rounded-full font-bold border border-white/10 hover:bg-white/5 transition flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-green-500 text-2xl"></i> Direct Message
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto text-center mb-20">
+            <h3 class="text-sky-400 font-bold uppercase tracking-widest text-xs mb-4">Technical Proficiency</h3>
+            <h2 class="text-4xl font-black">Expert <span class="gradient-text">Specializations</span></h2>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[2.5rem] border-sky-500/30 shadow-xl shadow-sky-500/5">
+                <i class="fas fa-laptop-code text-sky-400 text-4xl mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Software Engineering</h4>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">My core focus is designing scalable, clean-coded software architectures and efficient algorithms.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">System Design</span>
+                    <span class="skill-tag">Clean Code</span>
+                    <span class="skill-tag">Testing</span>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-[2.5rem]">
+                <i class="fas fa-code text-indigo-400 text-4xl mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Languages</h4>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-[2.5rem] border-white/5">
+                <i class="fas fa-mobile-screen-button text-purple-400 text-4xl mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Mobile App Developer</h4>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Developing high-performance native and cross-platform applications for Android and iOS.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">Kotlin</span>
+                    <span class="skill-tag">Swift</span>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-[2.5rem]">
+                <i class="fas fa-network-wired text-blue-400 text-4xl mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Networking</h4>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Deep understanding of TCP/IP, network routing, switching, and secure protocols.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Routing</span>
+                    <span class="skill-tag">Protocols</span>
+                    <span class="skill-tag">Security</span>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-[2.5rem]">
+                <i class="fas fa-brain text-emerald-400 text-4xl mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">AI & Learning</h4>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Building intelligent solutions using NLP, Machine Learning, and Neural Networks.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">ML</span>
+                    <span class="skill-tag">Deep Learning</span>
+                </div>
+            </div>
+
+            <div class="glass p-10 rounded-[2.5rem]">
+                <i class="fas fa-database text-amber-400 text-4xl mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Web & Database</h4>
+                <p class="text-slate-400 text-sm mb-6 leading-relaxed">Optimizing SQL databases and crafting robust web backends.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Normalization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="chatbot" class="glass border-t-4 border-sky-500">
+        <div class="p-6 bg-slate-900 border-b border-white/5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-sky-500/20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-user-gear text-sky-400"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold tracking-tight">Ali's Assistant</p>
+                    <p class="text-[10px] text-green-500 font-bold uppercase tracking-widest">Always Active</p>
+                </div>
+            </div>
+            <button onclick="closeChatbot()" class="text-slate-500 hover:text-white transition px-2"><i class="fas fa-times text-xl"></i></button>
+        </div>
+        <div id="chat-body" class="chat-body"></div>
+        <div class="p-5 bg-slate-900 flex gap-3">
+            <input type="text" id="user-input" onkeypress="if(event.key==='Enter')handleMessage()" placeholder="Ask about Software Engineering..." class="flex-1 bg-slate-800 border-none rounded-2xl px-5 py-4 text-sm outline-none focus:ring-1 focus:ring-sky-500 transition">
+            <button onclick="handleMessage()" class="bg-sky-500 text-white w-14 h-14 rounded-2xl flex items-center justify-center hover:bg-sky-400 transition"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <footer id="contact" class="py-20 px-6 border-t border-white/5 text-center">
+        <h2 class="text-2xl font-black mb-4 uppercase tracking-tighter">Ali Haider</h2>
+        <p class="text-slate-500 text-sm mb-8">Specialized Software Engineer | Mobile App Developer | Networking</p>
+        <div class="flex justify-center gap-6 text-slate-400 font-bold text-xs">
+            <span>+92 329 7537310</span>
+            <span>alihaiderjanjua3655@gmail.com</span>
+        </div>
+    </footer>
+
+    <script>
+        const chatBody = document.getElementById('chat-body');
+        const userInput = document.getElementById('user-input');
+
+        function activateChatbot() {
+            document.getElementById('chatbot').classList.add('active');
+            if(chatBody.innerHTML === "") {
+                sendBotMessage("Hi! I'm Ali's Assistant. I see you're interested in his work as a **Specialized Software Engineer**. I can tell you about his skills in **Programming, Mobile App Dev, Networking, and AI**. What's on your mind?");
+            }
+        }
+
+        function closeChatbot() { document.getElementById('chatbot').classList.remove('active'); }
+
+        function sendBotMessage(t) {
+            const d = document.createElement('div'); d.className = 'msg bot'; d.innerHTML = t;
+            chatBody.appendChild(d); chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function handleMessage() {
+            const t = userInput.value.trim(); if(!t) return;
+            const d = document.createElement('div'); d.className = 'msg user'; d.innerText = t;
+            chatBody.appendChild(d); userInput.value = ""; chatBody.scrollTop = chatBody.scrollHeight;
+            
+            const msg = t.toLowerCase();
+            setTimeout(() => {
+                if(msg.includes("software") || msg.includes("engineer")) {
+                    sendBotMessage("Ali is a **Specialized Software Engineer** focusing on scalable systems, clean code, and advanced algorithms.");
+                } else if(msg.includes("mobile") || msg.includes("app")) {
+                    sendBotMessage("As a **Mobile App Developer**, Ali builds fast, responsive applications using Flutter, Kotlin, and Swift.");
+                } else if(msg.includes("network")) {
+                    sendBotMessage("Ali has a strong foundation in **Networking**, including TCP/IP protocols, Cisco infrastructure, and secure routing.");
+                } else if(msg.includes("python") || msg.includes("java") || msg.includes("php") || msg.includes("cpp") || msg.includes("c#")) {
+                    sendBotMessage("He is proficient in multiple languages: **C++, C#, Python, Java, PHP, and JavaScript**.");
+                } else if(msg.includes("ai") || msg.includes("deep learning") || msg.includes("nlp")) {
+                    sendBotMessage("Ali specializes in **Artificial Intelligence**, specifically Natural Language Processing and Deep Learning models.");
+                } else if(msg.includes("contact") || msg.includes("whatsapp")) {
+                    sendBotMessage("You can reach Ali Haider directly on **WhatsApp at +92 329 7537310**.");
+                } else {
+                    sendBotMessage("Ali would be happy to discuss that! Feel free to reach out to him via the WhatsApp link.");
+                }
+            }, 800);
+        }
+    </script>
+</body>
+</html>
